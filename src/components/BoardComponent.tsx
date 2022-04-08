@@ -3,6 +3,7 @@ import React, { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CellAction, CellState } from "../type";
 import CellComponent from "./CellComponent";
+import { labelChars, labelNums } from "../store/initState";
 
 const BoardComponent = () => {
   const dispatch: Dispatch<CellAction> = useDispatch();
@@ -10,27 +11,17 @@ const BoardComponent = () => {
 
   const horLabels = (
     <div className="hor-label">
-      <div>A</div>
-      <div>B</div>
-      <div>C</div>
-      <div>D</div>
-      <div>E</div>
-      <div>F</div>
-      <div>G</div>
-      <div>H</div>
+      {labelChars.map((char) => (
+        <div>{char}</div>
+      ))}
     </div>
   );
 
   const vertLabels = (
     <div className="vert-label">
-      <div>8</div>
-      <div>7</div>
-      <div>6</div>
-      <div>5</div>
-      <div>4</div>
-      <div>3</div>
-      <div>2</div>
-      <div>1</div>
+      {labelNums.map((char) => (
+        <div>{char}</div>
+      ))}
     </div>
   );
 
