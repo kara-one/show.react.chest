@@ -1,19 +1,4 @@
 import { type } from "os";
-/*
-interface Cash {
-  cash: number;
-}
-
-type CashState = {
-  cash: Cash.cash;
-};
-
-type CashAction = {
-  type: string;
-  payload: Cash.cash;
-};
-
-type DispatchType = (args: CashAction) => CashAction; */
 
 interface Cell {
   name: string;
@@ -29,6 +14,8 @@ interface Figure {
   color: string;
   image: string;
 }
+
+type ICell = Cell;
 
 type CellState = {
   cells: Cell[];
