@@ -1,19 +1,39 @@
-import { Cell, CellState } from "../type";
+import { getFigure } from "../models/getFigure";
+import { ICell, CellState } from "../type";
 
-const cells: Cell[] = [];
+export const labelChars: Array<string> = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+];
+export const labelNums: Array<string> = [
+  "8",
+  "7",
+  "6",
+  "5",
+  "4",
+  "3",
+  "2",
+  "1",
+];
 
-export const labelChars: Array<string> = ["A", "B", "C", "D", "E", "F", "G", "H"];
-export const labelNums: Array<string> = ["8", "7", "6", "5", "4", "3", "2", "1"];
+const cells: ICell[] = [];
 
-for (let y = 8; y > 0; y--) {
+for (let y = 0; y < 8; y++) {
   for (let x = 0; x < 8; x++) {
-    const cell: Cell = {
+
+    const cell: ICell = {
       name: labelChars[x] + labelNums[y],
-      figure: null,
+      figure: getFigure(x, y),
       available: false,
       selected: false,
       x,
-      y: y - 1,
+      y,
     };
 
     cells.push(cell);

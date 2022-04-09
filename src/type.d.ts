@@ -1,29 +1,32 @@
 import { type } from "os";
 
-interface Cell {
+interface ICell {
   name: string;
-  figure: Figure | null;
+  figure: IFigure | null;
   available: boolean;
   selected: boolean;
   x: number;
   y: number;
 }
 
-interface Figure {
+interface IFigure {
   name: string;
   color: string;
   image: string;
 }
 
-type ICell = Cell;
+// type ICell = Cell;
+// type IFigure = IFigure;
 
 type CellState = {
-  cells: Cell[];
+  cells: ICell[];
 };
+
+type FigureState = IFigure[];
 
 type CellAction = {
   type: string;
-  cell: Cell;
+  cell: ICell;
 };
 
 type DispatchType = (args: CellAction) => CellAction;

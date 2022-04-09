@@ -1,7 +1,7 @@
-import { Cell, CellAction, DispatchType } from "../type";
+import { ICell, CellAction, DispatchType } from "../type";
 import * as actionTypes from "./actionTypes";
 
-export function moveFigure(cell: Cell) {
+export function moveFigure(cell: ICell) {
   const action: CellAction = {
     type: actionTypes.MOVE_FIGURE,
     cell,
@@ -10,7 +10,7 @@ export function moveFigure(cell: Cell) {
   return actionDispatch(action);
 }
 
-export function selectFigure(cell: Cell) {
+export function selectFigure(cell: ICell) {
   const action: CellAction = {
     type: actionTypes.SELECT_FIGURE,
     cell,
@@ -19,7 +19,7 @@ export function selectFigure(cell: Cell) {
   return actionDispatch(action);
 }
 
-export function setAvailable(cell: Cell) {
+export function setAvailable(cell: ICell) {
   const action: CellAction = {
     type: actionTypes.SET_AVAILABLE,
     cell,
@@ -28,7 +28,7 @@ export function setAvailable(cell: Cell) {
   return actionDispatch(action);
 }
 
-export function cleanAvailableAll(cell: Cell) {
+export function cleanAvailableAll(cell: ICell) {
   const action: CellAction = {
     type: actionTypes.CLEAN_AVAILABLE_ALL,
     cell,
