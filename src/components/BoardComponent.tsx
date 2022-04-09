@@ -1,4 +1,4 @@
-import "./boardComponent.css";
+import "./boardComponent.scss";
 import React, { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CellAction, CellState } from "../type";
@@ -12,7 +12,7 @@ const BoardComponent = () => {
   const horLabels = (
     <div className="hor-label">
       {labelChars.map((char) => (
-        <div>{char}</div>
+        <div key={char}>{char}</div>
       ))}
     </div>
   );
@@ -20,7 +20,7 @@ const BoardComponent = () => {
   const vertLabels = (
     <div className="vert-label">
       {labelNums.map((char) => (
-        <div>{char}</div>
+        <div key={char}>{char}</div>
       ))}
     </div>
   );

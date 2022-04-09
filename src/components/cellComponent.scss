@@ -1,0 +1,63 @@
+.cell {
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+
+  &.light {
+    background-color: #eeeed2;
+  }
+
+  &.dark {
+    background-color: #769656;
+  }
+
+  &.highlight {
+    background-color: rgb(255, 255, 0);
+  }
+
+  &.hint {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &.black {
+    &.rook {
+      background-image: url(../assets/black_rook.png);
+    }
+    &.knight {
+      background-image: url(../assets/black_knight.png);
+    }
+    &.bishop {
+      background-image: url(../assets/black_bishop.png);
+    }
+    &.queen {
+      background-image: url(../assets/black_queen.png);
+    }
+    &.king {
+      background-image: url(../assets/black_king.png);
+    }
+    &.pawn {
+      background-image: url(../assets/black_pawn.png);
+    }
+  }
+
+  &.white {
+    &.rook {
+      background-image: url(../assets/white_rook.png);
+    }
+    &.knight {
+      background-image: url(../assets/white_knight.png);
+    }
+    &.bishop {
+      background-image: url(../assets/white_bishop.png);
+    }
+    &.queen {
+      background-image: url(../assets/white_queen.png);
+    }
+    &.king {
+      background-image: url(../assets/white_king.png);
+    }
+    &.pawn {
+      background-image: url(../assets/white_pawn.png);
+    }
+  }
+}
