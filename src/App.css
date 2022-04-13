@@ -1,37 +1,6 @@
 .App {
   display: grid;
-  grid-template-columns: 300px;
-  grid-template-rows: 300px;
   place-content: center;
   background-color: #262421;
   min-height: 100vh;
-  padding: 50px;
-}
-
-@media (min-width: 500px) {
-  .App {
-    grid-template-columns: 400px;
-    grid-template-rows: 400px;
-  }
-}
-
-@media (min-width: 600px) {
-  .App {
-    grid-template-columns: 500px;
-    grid-template-rows: 500px;
-  }
-}
-
-@media (min-width: 700px) {
-  .App {
-    grid-template-columns: 600px;
-    grid-template-rows: 600px;
-  }
-}
-
-@media (min-width: 800px) {
-  .App {
-    grid-template-columns: 700px;
-    grid-template-rows: 700px;
-  }
 }
