@@ -15,11 +15,18 @@ interface IFigure {
   image: string;
 }
 
-// type ICell = Cell;
-// type IFigure = IFigure;
+interface ICoordinates {
+  xn: number;
+  yn: number;
+}
+
+type Figure = IFigure | null;
+
+type EnumType = { [s: any]: any };
 
 type CellState = {
   cells: ICell[];
+  selectCell: ICell | null;
 };
 
 type FigureState = IFigure[];

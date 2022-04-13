@@ -1,4 +1,4 @@
-import { getFigure } from "../models/getFigure";
+import { getFigure } from "../models/getFigureModel";
 import { ICell, CellState } from "../type";
 
 export const labelChars: Array<string> = [
@@ -26,7 +26,6 @@ const cells: ICell[] = [];
 
 for (let y = 0; y < 8; y++) {
   for (let x = 0; x < 8; x++) {
-
     const cell: ICell = {
       name: labelChars[x] + labelNums[y],
       figure: getFigure(x, y),
@@ -42,4 +41,5 @@ for (let y = 0; y < 8; y++) {
 
 export const initState: CellState = {
   cells,
+  selectCell: null,
 };
