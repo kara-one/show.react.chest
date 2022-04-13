@@ -2,7 +2,7 @@ import { CellAction, CellState, Figure } from "../type";
 import { initState } from "./initState";
 import * as actionTypes from "./actionTypes";
 import { calcAvailables } from "../models/calcAvailableModel";
-import { FigureName } from "../models/getFigureModel";
+import { Color, FigureName } from "../models/getFigureModel";
 
 const reducer = (
   state: CellState = initState,
@@ -15,10 +15,17 @@ const reducer = (
         ? state.selectCell?.figure
         : null;
       const targetFigure: Figure = action.cell.figure;
+      let currentPlayer: string = state.currentPlayer;
+
+      if (action.cell.available) {
+        currentPlayer =
+          currentPlayer === Color.WHITE ? Color.BLACK : Color.WHITE;
+      }
 
       return {
         ...state,
         selectCell: null,
+        currentPlayer: currentPlayer,
         cells: state.cells.map((cell) => {
           if (
             action.cell.available &&
@@ -47,7 +54,10 @@ const reducer = (
       return { ...state };
     /** SELECT_CELL */
     case actionTypes.SELECT_CELL:
-      if (action.cell.figure === null) {
+      if (
+        action.cell.figure === null ||
+        action.cell.figure.color !== state.currentPlayer
+      ) {
         return state;
       }
 

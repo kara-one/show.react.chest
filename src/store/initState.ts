@@ -1,4 +1,4 @@
-import { getFigure } from "../models/getFigureModel";
+import { Color, getFigure } from "../models/getFigureModel";
 import { ICell, CellState } from "../type";
 
 export const labelChars: Array<string> = [
@@ -42,4 +42,5 @@ for (let y = 0; y < 8; y++) {
 export const initState: CellState = {
   cells,
   selectCell: null,
+  currentPlayer: Color.WHITE,
 };

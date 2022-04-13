@@ -27,6 +27,7 @@ type EnumType = { [s: any]: any };
 type CellState = {
   cells: ICell[];
   selectCell: ICell | null;
+  currentPlayer: string;
 };
 
 type FigureState = IFigure[];
