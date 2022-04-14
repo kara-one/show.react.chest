@@ -1,4 +1,4 @@
-import { ICell, IFigure } from "../type";
+import { ICell, IFigure } from "../types/cell";
 
 export enum Color {
   WHITE = "white",
@@ -14,27 +14,36 @@ export enum FigureName {
   ROOK = "rook",
 }
 
-function createFigure(name: string, color: string): IFigure {
+export enum FigureCode {
+  PAWN = "",
+  BISHOP = "B",
+  KING = "K",
+  QUEEN = "Q",
+  KNIGHT = "N",
+  ROOK = "R",
+}
+
+function createFigure(name: string, color: string, code: string): IFigure {
   return {
     name,
     color,
-    image: [color, name].join("_") + ".png",
+    code,
   };
 }
 
 const Figures: IFigure[] = [
-  createFigure(FigureName.PAWN, Color.WHITE),
-  createFigure(FigureName.PAWN, Color.BLACK),
-  createFigure(FigureName.BISHOP, Color.WHITE),
-  createFigure(FigureName.BISHOP, Color.BLACK),
-  createFigure(FigureName.KING, Color.WHITE),
-  createFigure(FigureName.KING, Color.BLACK),
-  createFigure(FigureName.QUEEN, Color.WHITE),
-  createFigure(FigureName.QUEEN, Color.BLACK),
-  createFigure(FigureName.KNIGHT, Color.WHITE),
-  createFigure(FigureName.KNIGHT, Color.BLACK),
-  createFigure(FigureName.ROOK, Color.WHITE),
-  createFigure(FigureName.ROOK, Color.BLACK),
+  createFigure(FigureName.PAWN, Color.WHITE, FigureCode.PAWN),
+  createFigure(FigureName.PAWN, Color.BLACK, FigureCode.PAWN),
+  createFigure(FigureName.BISHOP, Color.WHITE, FigureCode.BISHOP),
+  createFigure(FigureName.BISHOP, Color.BLACK, FigureCode.BISHOP),
+  createFigure(FigureName.KING, Color.WHITE, FigureCode.KING),
+  createFigure(FigureName.KING, Color.BLACK, FigureCode.KING),
+  createFigure(FigureName.QUEEN, Color.WHITE, FigureCode.QUEEN),
+  createFigure(FigureName.QUEEN, Color.BLACK, FigureCode.QUEEN),
+  createFigure(FigureName.KNIGHT, Color.WHITE, FigureCode.KNIGHT),
+  createFigure(FigureName.KNIGHT, Color.BLACK, FigureCode.KNIGHT),
+  createFigure(FigureName.ROOK, Color.WHITE, FigureCode.ROOK),
+  createFigure(FigureName.ROOK, Color.BLACK, FigureCode.ROOK),
 ];
 
 export function getFigure(x: number, y: number): ICell["figure"] {

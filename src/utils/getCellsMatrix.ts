@@ -1,4 +1,4 @@
-import { ICell } from "../type";
+import { ICell } from "../types/cell";
 
 export default function getCellsMatrix(cells: ICell[]): ICell[][] {
   const matrix: ICell[][] = [];

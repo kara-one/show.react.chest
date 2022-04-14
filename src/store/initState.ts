@@ -1,5 +1,5 @@
 import { Color, getFigure } from "../models/getFigureModel";
-import { ICell, CellState } from "../type";
+import { ICell, CellState } from "../types/cell";
 
 export const labelChars: Array<string> = [
   "A",
@@ -43,4 +43,5 @@ export const initState: CellState = {
   cells,
   selectCell: null,
   currentPlayer: Color.WHITE,
+  history: [],
 };

@@ -1,4 +1,4 @@
-import { ICell, ICoordinates, IFigure } from "../../type";
+import { ICell, ICoordinates, IFigure } from "../../types/cell";
 import { FigureName } from "../getFigureModel";
 
 export default function stepsKing(

@@ -1,9 +1,9 @@
 import "./boardComponent.scss";
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { CellState } from "../type";
 import CellComponent from "./CellComponent";
 import { labelChars, labelNums } from "../store/initState";
+import { CellState } from "../types/cell";
 
 const BoardComponent = () => {
   const cells = useSelector((state: CellState) => state.cells);

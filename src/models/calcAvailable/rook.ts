@@ -1,4 +1,4 @@
-import { ICell, IFigure } from "../../type";
+import { ICell, IFigure } from "../../types/cell";
 import { FigureName } from "../getFigureModel";
 
 export default function stepsRock(

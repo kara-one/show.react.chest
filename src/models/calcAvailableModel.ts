@@ -1,4 +1,4 @@
-import { CellState } from "../type";
+import { CellState } from "../types/cell";
 import getCellsMatrix from "../utils/getCellsMatrix";
 import stepsBishop from "./calcAvailable/bishop";
 import stepsKing from "./calcAvailable/king";

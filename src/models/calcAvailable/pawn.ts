@@ -1,4 +1,4 @@
-import { ICell, IFigure } from "../../type";
+import { ICell, IFigure } from "../../types/cell";
 import { Color, FigureName } from "../getFigureModel";
 
 export default function stepsPawn(

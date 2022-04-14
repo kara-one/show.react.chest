@@ -1,8 +1,7 @@
-import { CellAction, CellState, Figure } from "../type";
 import { initState } from "./initState";
-import * as actionTypes from "./actionTypes";
 import { calcAvailables } from "../models/calcAvailableModel";
 import { Color, FigureName } from "../models/getFigureModel";
+import { CellAction, CellActions, CellState, Figure } from "../types/cell";
 
 const reducer = (
   state: CellState = initState,
@@ -10,7 +9,7 @@ const reducer = (
 ): CellState => {
   switch (action.type) {
     /** MOVE_FIGURE */
-    case actionTypes.MOVE_FIGURE:
+    case CellActions.MOVE_FIGURE:
       const selectFigure: Figure = state.selectCell?.figure
         ? state.selectCell?.figure
         : null;
@@ -50,10 +49,10 @@ const reducer = (
         }),
       };
     /** SELECT_FIGURE */
-    case actionTypes.SELECT_FIGURE:
+    case CellActions.SELECT_FIGURE:
       return { ...state };
     /** SELECT_CELL */
-    case actionTypes.SELECT_CELL:
+    case CellActions.SELECT_CELL:
       if (
         action.cell.figure === null ||
         action.cell.figure.color !== state.currentPlayer
@@ -76,7 +75,7 @@ const reducer = (
         }),
       };
     /** SET_AVAILABLE */
-    case actionTypes.SET_AVAILABLE:
+    case CellActions.SET_AVAILABLE:
       if (action.cell.figure === null) {
         return state;
       }
@@ -102,7 +101,7 @@ const reducer = (
         }),
       };
     /** CLEAN_AVAILABLE_ALL */
-    case actionTypes.CLEAN_AVAILABLE_ALL:
+    case CellActions.CLEAN_AVAILABLE_ALL:
       return {
         ...state,
         cells: state.cells.map((cell) => {

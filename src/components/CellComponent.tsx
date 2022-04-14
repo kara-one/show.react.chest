@@ -1,6 +1,6 @@
 import React, { Dispatch, FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CellAction, CellState, ICell } from "../type";
+import { CellAction, CellActions, CellState, ICell } from "../types/cell";
 import "./cellComponent.scss";
 
 interface CellProps {
@@ -38,11 +38,11 @@ const CellComponent: FC<CellProps> = ({ cell }) => {
   function cellClick() {
     // console.log(cell);
     if (selectCell) {
-      dispatch({ type: "MOVE_FIGURE", cell });
-      dispatch({ type: "CLEAN_AVAILABLE_ALL", cell });
+      dispatch({ type: CellActions.MOVE_FIGURE, cell });
+      dispatch({ type: CellActions.CLEAN_AVAILABLE_ALL, cell });
     } else {
-      dispatch({ type: "SELECT_CELL", cell });
-      dispatch({ type: "SET_AVAILABLE", cell });
+      dispatch({ type: CellActions.SELECT_CELL, cell });
+      dispatch({ type: CellActions.SET_AVAILABLE, cell });
     }
   }
 
