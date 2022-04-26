@@ -1,5 +1,5 @@
-import { ICell, ICoordinates, IFigure } from "../../types/cell";
-import { FigureName } from "../getFigureModel";
+import { ICell, ICoordinates } from "../../types/cellTypes";
+import { FigureName, IFigure } from "../../types/figureTypes";
 
 
 export default function stepsKnight(

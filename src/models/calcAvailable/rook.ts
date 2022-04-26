@@ -1,5 +1,5 @@
-import { ICell, IFigure } from "../../types/cell";
-import { FigureName } from "../getFigureModel";
+import { ICell } from "../../types/cellTypes";
+import { FigureName, IFigure } from "../../types/figureTypes";
 
 export default function stepsRock(
   cellsMatrix: ICell[][],

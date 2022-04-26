@@ -5,10 +5,11 @@ import App from "./App";
 import { createStore, Store } from "redux";
 import { Provider } from "react-redux";
 import reducer from "./store/reducer";
-import { CellAction, CellState, DispatchType } from "./types/cell";
+import { CellActionOld, ICellState, DispatchType } from "./types/cellTypes";
+import { store } from "./store";
 
-const store: Store<CellState, CellAction> & { dispatch: DispatchType } =
-  createStore(reducer);
+/* const store: Store<ICellState, CellActionOld> & { dispatch: DispatchType } =
+  createStore(reducer); */
 
 ReactDOM.render(
   <Provider store={store}>

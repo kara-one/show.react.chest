@@ -1,5 +1,6 @@
-import { Color, getFigure } from "../models/getFigureModel";
-import { ICell, CellState } from "../types/cell";
+import { getFigure } from "../models/getFigureModel";
+import { ICell, ICellState } from "../types/cellTypes";
+import { FigureColor } from "../types/figureTypes";
 
 export const labelChars: Array<string> = [
   "A",
@@ -24,8 +25,8 @@ export const labelNums: Array<string> = [
 
 const cells: ICell[] = [];
 
-for (let y = 0; y < 8; y++) {
-  for (let x = 0; x < 8; x++) {
+for (let y = 0; y < labelNums.length; y++) {
+  for (let x = 0; x < labelChars.length; x++) {
     const cell: ICell = {
       name: labelChars[x] + labelNums[y],
       figure: getFigure(x, y),
@@ -39,9 +40,9 @@ for (let y = 0; y < 8; y++) {
   }
 }
 
-export const initState: CellState = {
+export const initCellState: ICellState = {
   cells,
   selectCell: null,
-  currentPlayer: Color.WHITE,
+  currentPlayer: FigureColor.WHITE,
   history: [],
 };

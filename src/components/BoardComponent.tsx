@@ -2,11 +2,13 @@ import "./boardComponent.scss";
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CellComponent from "./CellComponent";
-import { labelChars, labelNums } from "../store/initState";
-import { CellState } from "../types/cell";
+import { labelChars, labelNums } from "../store/initCellState";
+import { ICellState } from "../types/cellTypes";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const BoardComponent = () => {
-  const cells = useSelector((state: CellState) => state.cells);
+  // const cells = useSelector((state: ICellState) => state.cells);
+  const { cells } = useTypedSelector((state) => state.cells);
   let [boardSide, setBoardSide] = useState(
     Math.round(
       (window.innerWidth > window.innerHeight

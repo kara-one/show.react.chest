@@ -1,4 +1,4 @@
-import { CellState } from "../types/cell";
+import { ICell, ICellState } from "../types/cellTypes";
 import getCellsMatrix from "../utils/getCellsMatrix";
 import stepsBishop from "./calcAvailable/bishop";
 import stepsKing from "./calcAvailable/king";
@@ -7,21 +7,31 @@ import stepsPawn from "./calcAvailable/pawn";
 import stepsQueen from "./calcAvailable/queen";
 import stepsRock from "./calcAvailable/rook";
 
-export function calcAvailables(state: CellState): string[] {
+export function calcAvailables(state: ICellState): string[] {
   let availables: string[] = [];
   const selectCell = state.selectCell;
+
+  if (selectCell === null) {
+    return availables;
+  }
+
+  return availableCellNamesList(state.cells, selectCell);
+}
+
+export const availableCellNamesList = (
+  cells: ICell[],
+  selectCell: ICell
+): string[] => {
+  let availables: string[] = [];
 
   if (selectCell === null || selectCell.figure === null) {
     return availables;
   }
 
-  // console.log(state.cells);
-
   const figure = selectCell.figure;
   const x = selectCell.x;
   const y = selectCell.y;
-  const cellsMatrix = getCellsMatrix(state.cells);
-  // console.log(cellsMatrix);
+  const cellsMatrix = getCellsMatrix(cells);
 
   /** PAWN */
   availables = availables.concat(stepsPawn(cellsMatrix, figure, x, y));
@@ -41,7 +51,5 @@ export function calcAvailables(state: CellState): string[] {
   /** KING */
   availables = availables.concat(stepsKing(cellsMatrix, figure, x, y));
 
-
-
   return availables;
-}
+};

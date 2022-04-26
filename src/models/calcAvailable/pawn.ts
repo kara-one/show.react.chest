@@ -1,5 +1,5 @@
-import { ICell, IFigure } from "../../types/cell";
-import { Color, FigureName } from "../getFigureModel";
+import { ICell } from "../../types/cellTypes";
+import { FigureColor, FigureName, IFigure } from "../../types/figureTypes";
 
 export default function stepsPawn(
   cellsMatrix: ICell[][],
@@ -12,7 +12,7 @@ export default function stepsPawn(
 
   if (figure.name === FigureName.PAWN) {
     /** WHITE */
-    if (figure.color === Color.WHITE) {
+    if (figure.color === FigureColor.WHITE) {
       if (y > 0) {
         checkCell = cellsMatrix[y - 1][x];
 
@@ -45,7 +45,7 @@ export default function stepsPawn(
     }
 
     /** BLACK */
-    if (figure.color === Color.BLACK) {
+    if (figure.color === FigureColor.BLACK) {
       if (y < 7) {
         checkCell = cellsMatrix[y + 1][x];
 

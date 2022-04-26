@@ -1,24 +1,24 @@
-import { initState } from "./initState";
+import { initCellState } from "./initCellState";
 import { calcAvailables } from "../models/calcAvailableModel";
-import { Color, FigureName } from "../models/getFigureModel";
-import { CellAction, CellActions, CellState, Figure } from "../types/cell";
+import { CellActionOld, CellActionTypes, ICell, ICellState } from "../types/cellTypes";
+import { FigureColor, FigureName } from "../types/figureTypes";
 
 const reducer = (
-  state: CellState = initState,
-  action: CellAction
-): CellState => {
+  state = initCellState,
+  action: CellActionOld
+): ICellState => {
   switch (action.type) {
     /** MOVE_FIGURE */
-    case CellActions.MOVE_FIGURE:
-      const selectFigure: Figure = state.selectCell?.figure
+    case CellActionTypes.MOVE_FIGURE:
+      const selectFigure: ICell["figure"] = state.selectCell?.figure
         ? state.selectCell?.figure
         : null;
-      const targetFigure: Figure = action.cell.figure;
+      const targetFigure: ICell["figure"] = action.cell.figure;
       let currentPlayer: string = state.currentPlayer;
 
       if (action.cell.available) {
         currentPlayer =
-          currentPlayer === Color.WHITE ? Color.BLACK : Color.WHITE;
+          currentPlayer === FigureColor.WHITE ? FigureColor.BLACK : FigureColor.WHITE;
       }
 
       return {
@@ -48,11 +48,8 @@ const reducer = (
           return cell;
         }),
       };
-    /** SELECT_FIGURE */
-    case CellActions.SELECT_FIGURE:
-      return { ...state };
     /** SELECT_CELL */
-    case CellActions.SELECT_CELL:
+    case CellActionTypes.SELECT_CELL:
       if (
         action.cell.figure === null ||
         action.cell.figure.color !== state.currentPlayer
@@ -75,7 +72,7 @@ const reducer = (
         }),
       };
     /** SET_AVAILABLE */
-    case CellActions.SET_AVAILABLE:
+    case CellActionTypes.SET_AVAILABLE:
       if (action.cell.figure === null) {
         return state;
       }
@@ -101,7 +98,7 @@ const reducer = (
         }),
       };
     /** CLEAN_AVAILABLE_ALL */
-    case CellActions.CLEAN_AVAILABLE_ALL:
+    case CellActionTypes.CLEAN_AVAILABLE_ALL:
       return {
         ...state,
         cells: state.cells.map((cell) => {
