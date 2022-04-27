@@ -1,4 +1,4 @@
-import { ICell, ICellState } from "../types/cellTypes";
+import { CellMatrix, ICell, ICellState } from "../types/cellTypes";
 import getCellsMatrix from "../utils/getCellsMatrix";
 import stepsBishop from "./calcAvailable/bishop";
 import stepsKing from "./calcAvailable/king";
@@ -19,7 +19,7 @@ export function calcAvailables(state: ICellState): string[] {
 }
 
 export const availableCellNamesList = (
-  cells: ICell[],
+  cells: CellMatrix,
   selectCell: ICell
 ): string[] => {
   let availables: string[] = [];
@@ -31,7 +31,8 @@ export const availableCellNamesList = (
   const figure = selectCell.figure;
   const x = selectCell.x;
   const y = selectCell.y;
-  const cellsMatrix = getCellsMatrix(cells);
+  const cellsMatrix = cells;
+  // const cellsMatrix = getCellsMatrix(cells);
 
   /** PAWN */
   availables = availables.concat(stepsPawn(cellsMatrix, figure, x, y));

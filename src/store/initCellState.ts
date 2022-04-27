@@ -1,5 +1,5 @@
 import { getFigure } from "../models/getFigureModel";
-import { ICell, ICellState } from "../types/cellTypes";
+import { CellMatrix, ICell, ICellState } from "../types/cellTypes";
 import { FigureColor } from "../types/figureTypes";
 
 export const labelChars: Array<string> = [
@@ -23,9 +23,12 @@ export const labelNums: Array<string> = [
   "1",
 ];
 
-const cells: ICell[] = [];
+const cells: CellMatrix = [];
 
 for (let y = 0; y < labelNums.length; y++) {
+  if(!cells[y]) {
+    cells[y] = []
+  }
   for (let x = 0; x < labelChars.length; x++) {
     const cell: ICell = {
       name: labelChars[x] + labelNums[y],
@@ -36,7 +39,7 @@ for (let y = 0; y < labelNums.length; y++) {
       y,
     };
 
-    cells.push(cell);
+    cells[y].push(cell);
   }
 }
 

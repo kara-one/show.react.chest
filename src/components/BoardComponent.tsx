@@ -60,9 +60,9 @@ const BoardComponent = () => {
       <div></div>
       {vertLabels}
       <div className="cell-area">
-        {cells.map((cell) => (
-          <CellComponent key={cell.name} cell={cell} />
-        ))}
+        {cells.map((cellsRow) => cellsRow.map(cell =>(
+          <CellComponent key={cell.name} curentCell={cell} />
+        )))}
       </div>
       {vertLabels}
       <div></div>

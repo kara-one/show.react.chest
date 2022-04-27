@@ -1,8 +1,8 @@
-import { ICell } from "../../types/cellTypes";
+import { CellMatrix, ICell } from "../../types/cellTypes";
 import { FigureColor, FigureName, IFigure } from "../../types/figureTypes";
 
 export default function stepsPawn(
-  cellsMatrix: ICell[][],
+  cellsMatrix: CellMatrix,
   figure: IFigure,
   x: number,
   y: number
@@ -30,14 +30,14 @@ export default function stepsPawn(
 
         if (x > 0) {
           checkCell = cellsMatrix[y - 1][x - 1];
-          if (checkCell.figure !== null) {
+          if (checkCell.figure !== null && checkCell.figure.color !== figure.color) {
             availables.push(checkCell.name);
           }
         }
 
         if (x < 7) {
           checkCell = cellsMatrix[y - 1][x + 1];
-          if (checkCell.figure !== null) {
+          if (checkCell.figure !== null && checkCell.figure.color !== figure.color) {
             availables.push(checkCell.name);
           }
         }
@@ -63,14 +63,14 @@ export default function stepsPawn(
 
         if (x > 0) {
           checkCell = cellsMatrix[y + 1][x - 1];
-          if (checkCell.figure !== null) {
+          if (checkCell.figure !== null && checkCell.figure.color !== figure.color) {
             availables.push(checkCell.name);
           }
         }
 
         if (x < 7) {
           checkCell = cellsMatrix[y + 1][x + 1];
-          if (checkCell.figure !== null) {
+          if (checkCell.figure !== null && checkCell.figure.color !== figure.color) {
             availables.push(checkCell.name);
           }
         }

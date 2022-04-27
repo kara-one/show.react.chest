@@ -9,6 +9,8 @@ export interface ICell {
   y: number;
 }
 
+export type CellMatrix = ICell[][];
+
 export type HistoryNoteType = "" | "#" | "+" | "0-0" | "0-0-0";
 
 export interface IHistory {
@@ -18,7 +20,7 @@ export interface IHistory {
 }
 
 export interface ICellState {
-  cells: ICell[];
+  cells: CellMatrix;
   selectCell: ICell | null;
   currentPlayer: string;
   history: IHistory[];
@@ -32,6 +34,11 @@ export interface ICoordinates {
 export enum CellActionTypes {
   CELL_TOGGLE_CURRENT_PLAYER = "CELL_TOGGLE_CURRENT_PLAYER",
   CELL_SET_SELECT = "CELL_SET_SELECT",
+  CELL_UNSET_SELECT = "CELL_UNSET_SELECT",
+  CELL_SET_AVAILABLES = "CELL_SET_AVAILABLES",
+  CELL_SET_UNAVAILABLES = "CELL_SET_UNAVAILABLES",
+  CELL_MOVE_FIGURE = "CELL_MOVE_FIGURE",
+  /** OLD */
   CELL_RELOAD = "CELL_RELOAD",
   MOVE_FIGURE = "MOVE_FIGURE",
   SELECT_CELL = "SELECT_CELL",
@@ -44,15 +51,27 @@ interface CellToggleCurrentPlayerAction {
 }
 interface CellSetSelectAction {
   type: CellActionTypes.CELL_SET_SELECT;
-  payload: ICell | null;
+  payload: ICell;
 }
+interface CellUnSetSelectAction {
+  type: CellActionTypes.CELL_UNSET_SELECT;
+  payload: ICell;
+}
+interface CellSetAvailablesAction {
+  type: CellActionTypes.CELL_SET_AVAILABLES;
+  payload: string[];
+}
+interface CellSetUnAvailablesAction {
+  type: CellActionTypes.CELL_SET_UNAVAILABLES;
+}
+interface CellMoveFigureAction {
+  type: CellActionTypes.CELL_MOVE_FIGURE;
+  payload: ICell;
+}
+/** OLD */
 interface CellReloadAction {
   type: CellActionTypes.CELL_RELOAD;
-  payload: ICell[];
-}
-interface CellSetAvailableAction {
-  type: CellActionTypes.SET_AVAILABLE;
-  payload: ICell;
+  payload: CellMatrix;
 }
 interface CellCleanAvailableAllAction {
   type: CellActionTypes.CLEAN_AVAILABLE_ALL;
@@ -62,8 +81,12 @@ interface CellCleanAvailableAllAction {
 export type CellAction =
   | CellToggleCurrentPlayerAction
   | CellSetSelectAction
+  | CellUnSetSelectAction
+  | CellSetAvailablesAction
+  | CellSetUnAvailablesAction
+  | CellMoveFigureAction
+  /** OLD */
   | CellReloadAction
-  | CellSetAvailableAction
   | CellCleanAvailableAllAction;
 
 export interface CellActionOld {

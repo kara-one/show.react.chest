@@ -1,15 +1,16 @@
-import { ICell, ICoordinates } from "../../types/cellTypes";
+import { CellMatrix, ICell, ICoordinates } from "../../types/cellTypes";
 import { FigureName, IFigure } from "../../types/figureTypes";
 
 
 export default function stepsKnight(
-  cellsMatrix: ICell[][],
+  cellsMatrix: CellMatrix,
   figure: IFigure,
   x: number,
   y: number
 ): string[] {
   const availables: string[] = [];
   const coordinates: ICoordinates[] = [];
+  let checkCell: ICell;
 
   if (figure.name === FigureName.KNIGHT) {
     coordinates.push({ yn: y - 2, xn: x - 1 });
@@ -25,7 +26,16 @@ export default function stepsKnight(
       const { xn, yn } = coordinates[i];
 
       if (xn >= 0 && xn <= 7 && yn >= 0 && yn <= 7) {
-        availables.push(cellsMatrix[yn][xn].name);
+        checkCell = cellsMatrix[yn][xn]
+
+        if (checkCell.figure === null) {
+          availables.push(checkCell.name);
+        } else if (
+          checkCell.figure !== null &&
+          checkCell.figure.color !== figure.color
+        ) {
+          availables.push(checkCell.name);
+        }
       }
     }
   }

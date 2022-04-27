@@ -1,8 +1,8 @@
-import { ICell } from "../../types/cellTypes";
+import { CellMatrix, ICell } from "../../types/cellTypes";
 import { FigureName, IFigure } from "../../types/figureTypes";
 
 export default function stepsQueen(
-  cellsMatrix: ICell[][],
+  cellsMatrix: CellMatrix,
   figure: IFigure,
   x: number,
   y: number
@@ -16,7 +16,7 @@ export default function stepsQueen(
   const rightTopCells: ICell[] = [];
   const leftBottomCells: ICell[] = [];
   const rightBottomCells: ICell[] = [];
-  const checkCells: ICell[][] = [];
+  const checkCells: CellMatrix = [];
   let checkCell: ICell;
   let nextY: number;
 

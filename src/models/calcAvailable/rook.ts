@@ -1,8 +1,8 @@
-import { ICell } from "../../types/cellTypes";
+import { CellMatrix, ICell } from "../../types/cellTypes";
 import { FigureName, IFigure } from "../../types/figureTypes";
 
 export default function stepsRock(
-  cellsMatrix: ICell[][],
+  cellsMatrix: CellMatrix,
   figure: IFigure,
   x: number,
   y: number
@@ -12,7 +12,7 @@ export default function stepsRock(
   const rightCells: ICell[] = [];
   const topCells: ICell[] = [];
   const bottomCells: ICell[] = [];
-  const checkCells: ICell[][] = [];
+  const checkCells: CellMatrix = [];
   let checkCell: ICell;
 
   if (figure.name === FigureName.ROOK) {

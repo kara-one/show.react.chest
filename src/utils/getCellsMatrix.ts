@@ -1,7 +1,7 @@
-import { ICell } from "../types/cellTypes";
+import { CellMatrix, ICell } from "../types/cellTypes";
 
-export default function getCellsMatrix(cells: ICell[]): ICell[][] {
-  const matrix: ICell[][] = [];
+export default function getCellsMatrix(cells: ICell[]): CellMatrix {
+  const matrix: CellMatrix = [];
 
   for (let i = 0; i < cells.length; i++) {
     const cell = cells[i];

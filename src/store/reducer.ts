@@ -9,7 +9,7 @@ const reducer = (
 ): ICellState => {
   switch (action.type) {
     /** MOVE_FIGURE */
-    case CellActionTypes.MOVE_FIGURE:
+    /* case CellActionTypes.MOVE_FIGURE:
       const selectFigure: ICell["figure"] = state.selectCell?.figure
         ? state.selectCell?.figure
         : null;
@@ -47,9 +47,9 @@ const reducer = (
 
           return cell;
         }),
-      };
+      }; */
     /** SELECT_CELL */
-    case CellActionTypes.SELECT_CELL:
+    /* case CellActionTypes.SELECT_CELL:
       if (
         action.cell.figure === null ||
         action.cell.figure.color !== state.currentPlayer
@@ -70,9 +70,9 @@ const reducer = (
 
           return cell;
         }),
-      };
+      }; */
     /** SET_AVAILABLE */
-    case CellActionTypes.SET_AVAILABLE:
+    /* case CellActionTypes.SET_AVAILABLE:
       if (action.cell.figure === null) {
         return state;
       }
@@ -96,9 +96,9 @@ const reducer = (
 
           return cell;
         }),
-      };
+      }; */
     /** CLEAN_AVAILABLE_ALL */
-    case CellActionTypes.CLEAN_AVAILABLE_ALL:
+    /* case CellActionTypes.CLEAN_AVAILABLE_ALL:
       return {
         ...state,
         cells: state.cells.map((cell) => {
@@ -108,7 +108,7 @@ const reducer = (
 
           return cell;
         }),
-      };
+      }; */
     default:
       return state;
   }
