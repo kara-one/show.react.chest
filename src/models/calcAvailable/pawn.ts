@@ -1,4 +1,4 @@
-import { CellMatrix, ICell } from "../../types/cellTypes";
+import { CellMatrix } from "../../types/cellTypes";
 import { FigureColor, FigureName, IFigure } from "../../types/figureTypes";
 
 export default function stepsPawn(

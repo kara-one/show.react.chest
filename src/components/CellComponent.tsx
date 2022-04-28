@@ -1,13 +1,7 @@
-import React, { Dispatch, FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { FC } from "react";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import {
-  CellActionOld,
-  CellActionTypes,
-  ICellState,
-  ICell,
-} from "../types/cellTypes";
+import { ICell } from "../types/cellTypes";
 import { getCellClasses } from "../utils/getCellClasses";
 import "./cellComponent.scss";
 
@@ -16,10 +10,7 @@ interface CellProps {
 }
 
 const CellComponent: FC<CellProps> = ({ curentCell }) => {
-  /* const dispatch: Dispatch<CellActionOld> = useDispatch();
-  const selectCell = useSelector((state: ICellState) => state.selectCell); */
   const {
-    cellClickAction,
     cellSetSelectAction,
     cellUnSetSelectAction,
     cellSetAvailablesAction,
@@ -40,27 +31,22 @@ const CellComponent: FC<CellProps> = ({ curentCell }) => {
         cellSetUnAvailablesAction();
       }
 
+      // Set Select
       cellSetSelectAction(curentCell);
       cellSetAvailablesAction(curentCell, cells);
-    } else if (selectCell && curentCell.available) {
+    }
+    // Click by Cell without Figure
+    else if (selectCell && curentCell.available) {
+      // Move Figure
       cellMoveFigureAction(curentCell);
       cellToggleCurrentPlayerAction();
-      console.log(curentCell);
+
       // Unselect
       if (selectCell) {
         cellUnSetSelectAction(selectCell);
         cellSetUnAvailablesAction();
       }
     }
-
-    // cellClickAction(curentCell, selectCell, cells, currentPlayer);
-    /* if (selectCell) {
-      dispatch({ type: CellActionTypes.MOVE_FIGURE, curentCell });
-      dispatch({ type: CellActionTypes.CLEAN_AVAILABLE_ALL, curentCell });
-    } else {
-      dispatch({ type: CellActionTypes.SELECT_CELL, curentCell });
-      dispatch({ type: CellActionTypes.SET_AVAILABLE, curentCell });
-    } */
   }
 
   return <div className={getCellClasses(curentCell)} onClick={cellClick}></div>;

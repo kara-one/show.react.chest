@@ -78,11 +78,6 @@ export const cellReducer = (
         selectCell: null,
         cells: cellsCopy,
       };
-    /** OLD */
-    case CellActionTypes.CELL_RELOAD:
-      return { ...state, cells: action.payload };
-    case CellActionTypes.CLEAN_AVAILABLE_ALL:
-      return { ...state };
     default:
       return state;
   }

@@ -1,5 +1,4 @@
 import { CellMatrix, ICell, ICellState } from "../types/cellTypes";
-import getCellsMatrix from "../utils/getCellsMatrix";
 import stepsBishop from "./calcAvailable/bishop";
 import stepsKing from "./calcAvailable/king";
 import stepsKnight from "./calcAvailable/knight";
@@ -32,7 +31,6 @@ export const availableCellNamesList = (
   const x = selectCell.x;
   const y = selectCell.y;
   const cellsMatrix = cells;
-  // const cellsMatrix = getCellsMatrix(cells);
 
   /** PAWN */
   availables = availables.concat(stepsPawn(cellsMatrix, figure, x, y));
