@@ -5,7 +5,7 @@ import { labelChars, labelNums } from "../store/initCellState";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const BoardComponent = () => {
-  const { cells } = useTypedSelector((state) => state.cells);
+  const { cells } = useTypedSelector((state) => state.board);
   let [boardSide, setBoardSide] = useState(
     Math.round(
       (window.innerWidth > window.innerHeight
