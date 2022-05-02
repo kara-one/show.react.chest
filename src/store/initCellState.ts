@@ -26,8 +26,8 @@ export const labelNums: Array<string> = [
 const cells: CellMatrix = [];
 
 for (let y = 0; y < labelNums.length; y++) {
-  if(!cells[y]) {
-    cells[y] = []
+  if (!cells[y]) {
+    cells[y] = [];
   }
   for (let x = 0; x < labelChars.length; x++) {
     const cell: ICell = {
@@ -48,4 +48,5 @@ export const initCellState: ICellState = {
   selectCell: null,
   currentPlayer: FigureColor.WHITE,
   history: [],
+  timer: { white: 0, black: 0 },
 };

@@ -19,11 +19,17 @@ export interface IHistory {
   note?: HistoryNoteType;
 }
 
+export interface ITimer {
+  white: number;
+  black: number;
+}
+
 export interface ICellState {
   cells: CellMatrix;
   selectCell: ICell | null;
   currentPlayer: string;
   history: IHistory[];
+  timer: ITimer;
 }
 
 export interface ICoordinates {
