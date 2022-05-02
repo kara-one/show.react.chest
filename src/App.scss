@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr $widthHistoryBlock;
   grid-template-rows: 1fr;
-  background-color: #262421;
+  background-color: $black;
   min-height: 100vh;
 
   .board-wrap {
@@ -13,7 +13,10 @@
   }
 
   .history-wrap {
-    background-color: #fff;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-column: 1fr;
+    background-color: $white;
     width: $widthHistoryBlock;
   }
 }
