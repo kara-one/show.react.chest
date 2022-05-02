@@ -14,9 +14,9 @@ export type CellMatrix = ICell[][];
 export type HistoryNoteType = "" | "#" | "+" | "0-0" | "0-0-0";
 
 export interface IHistory {
-  white: string;
-  black: string;
-  note: HistoryNoteType;
+  white?: string;
+  black?: string;
+  note?: HistoryNoteType;
 }
 
 export interface ICellState {
@@ -36,6 +36,7 @@ export enum CellActionTypes {
   CELL_SET_SELECT = "CELL_SET_SELECT",
   CELL_UNSET_SELECT = "CELL_UNSET_SELECT",
   CELL_BOARD_UPDATE = "CELL_BOARD_UPDATE",
+  CELL_HISTORY_UPDATE = "CELL_HISTORY_UPDATE",
 }
 
 interface CellToggleCurrentPlayerAction {
@@ -53,9 +54,14 @@ interface CellBoardUpdateAction {
   type: CellActionTypes.CELL_BOARD_UPDATE;
   cells: CellMatrix;
 }
+interface CellHistoryUpdateAction {
+  type: CellActionTypes.CELL_HISTORY_UPDATE;
+  history: IHistory[];
+}
 
 export type CellAction =
   | CellToggleCurrentPlayerAction
   | CellSetSelectAction
   | CellUnSetSelectAction
-  | CellBoardUpdateAction;
+  | CellBoardUpdateAction
+  | CellHistoryUpdateAction;

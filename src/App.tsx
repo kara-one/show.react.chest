@@ -1,11 +1,17 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import BoardComponent from "./components/BoardComponent";
+import HistoryComponent from "./components/HistoryComponent";
 
 function App() {
   return (
     <div className="App">
-      <BoardComponent />
+      <div className="board-wrap">
+        <BoardComponent />
+      </div>
+      <div className="history-wrap">
+        <HistoryComponent />
+      </div>
     </div>
   );
 }

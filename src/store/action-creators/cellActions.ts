@@ -125,6 +125,32 @@ const cellToggleCurrentPlayerAction = (): Function => {
   };
 };
 
+const cellHistoryUpdateAction = (currentCell: ICell): Function => {
+  return (dispatch: Dispatch<CellAction>, getState: Function) => {
+    const { board }: RootReducer = getState();
+    const history = board.history.map((step) => ({ ...step }));
+
+    if (board.selectCell) {
+      let currentHistory =
+        board.selectCell.figure?.code + board.selectCell.name.toLowerCase();
+
+      currentHistory += currentCell.figure ? "x" : "—";
+      currentHistory += currentCell.name.toLowerCase();
+
+      if (board.currentPlayer === FigureColor.WHITE) {
+        history.push({ white: currentHistory });
+      } else {
+        history[history.length - 1].black = currentHistory;
+      }
+
+      dispatch({
+        type: CellActionTypes.CELL_HISTORY_UPDATE,
+        history: history,
+      });
+    }
+  };
+};
+
 const cellClickAction = (curentCell: ICell): Function => {
   return (dispatch: Dispatch<CellAction | Function>, getState: Function) => {
     const { board }: RootReducer = getState();
@@ -144,6 +170,7 @@ const cellClickAction = (curentCell: ICell): Function => {
     // Click by Cell move Figure
     else if (board.selectCell && curentCell.available) {
       // Move Figure
+      dispatch(cellHistoryUpdateAction(curentCell));
       dispatch(cellMoveFigureAction(curentCell));
       dispatch(cellToggleCurrentPlayerAction());
 

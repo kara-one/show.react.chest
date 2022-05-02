@@ -1,0 +1,17 @@
+@import "../variables";
+
+.history {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  .history-list {
+    padding: 0 10px;
+
+    ol {
+      padding-left: 10px;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+}

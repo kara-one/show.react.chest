@@ -30,6 +30,12 @@ export const cellReducer = (
         cells: action.cells,
       };
 
+    case CellActionTypes.CELL_HISTORY_UPDATE:
+      return {
+        ...state,
+        history: action.history,
+      };
+
     default:
       return state;
   }

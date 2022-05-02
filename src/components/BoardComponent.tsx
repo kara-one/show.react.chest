@@ -6,28 +6,27 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 
 const BoardComponent = () => {
   const { cells } = useTypedSelector((state) => state.board);
-  let [boardSide, setBoardSide] = useState(
-    Math.round(
-      (window.innerWidth > window.innerHeight
-        ? window.innerHeight
-        : window.innerWidth) * 0.9
-    )
-  );
 
-  let resizeWindow = useCallback(() => {
+  let [boardSide, setBoardSide] = useState(0);
+
+  let resizeWindow = useCallback((elem) => {
     setBoardSide(
       Math.round(
-        (window.innerWidth > window.innerHeight
-          ? window.innerHeight
-          : window.innerWidth) * 0.9
+        (elem.clientWidth > elem.clientHeight
+          ? elem.clientHeight
+          : elem.clientWidth) * 0.8
       )
     );
   }, []);
 
   useEffect(() => {
-    resizeWindow();
-    window.addEventListener("resize", resizeWindow);
-    return () => window.removeEventListener("resize", resizeWindow);
+    const boardWrap = document.querySelector(".board-wrap");
+
+    resizeWindow(boardWrap);
+    window.addEventListener("resize", () => resizeWindow(boardWrap));
+
+    return () =>
+      window.removeEventListener("resize", () => resizeWindow(boardWrap));
   }, [resizeWindow]);
 
   const horLabels = (
@@ -56,9 +55,11 @@ const BoardComponent = () => {
       <div></div>
       {vertLabels}
       <div className="cell-area">
-        {cells.map((cellsRow) => cellsRow.map(cell =>(
-          <CellComponent key={cell.name} curentCell={cell} />
-        )))}
+        {cells.map((cellsRow) =>
+          cellsRow.map((cell) => (
+            <CellComponent key={cell.name} curentCell={cell} />
+          ))
+        )}
       </div>
       {vertLabels}
       <div></div>

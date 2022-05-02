@@ -1,0 +1,19 @@
+@import "./variables";
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr $widthHistoryBlock;
+  grid-template-rows: 1fr;
+  background-color: #262421;
+  min-height: 100vh;
+
+  .board-wrap {
+    display: grid;
+    place-content: center;
+  }
+
+  .history-wrap {
+    background-color: #fff;
+    width: $widthHistoryBlock;
+  }
+}
